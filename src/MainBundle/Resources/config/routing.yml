@@ -1,0 +1,138 @@
+
+offrecovoiturage_index:
+    path:     /User/covoiturage
+    defaults: { _controller: MainBundle:OffreCovoiturage:index}
+
+offrecovoiturage_new:
+    path:     /User/newcovoiturage
+    defaults: { _controller: MainBundle:OffreCovoiturage:new }
+
+offrecovoiturage_show:
+    path:     /showcovoiturage/{idOffre}
+    defaults: { _controller: MainBundle:OffreCovoiturage:show }
+
+offrecovoiturage_delete:
+    path:     /delete/{idOffre}
+    defaults: { _controller: MainBundle:OffreCovoiturage:delete }
+
+offrecovoiturage_edit:
+    path:     /{idOffre}/edit
+    defaults: { _controller: MainBundle:OffreCovoiturage:edit }
+
+
+
+commentaire_new:
+    path:     /User/newCommentaire
+    defaults: { _controller: MainBundle:Commentaire:new }
+
+
+commentaire_index:
+    path:     /User/commentaire
+    defaults: { _controller: MainBundle:Commentaire:index }
+
+commentaire_show:
+    path:     /{id}/show
+    defaults: { _controller: MainBundle:Commentaire:show }
+
+commentaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: MainBundle:Commentaire:edit }
+
+
+
+
+ReclamationCovoiturage_index:
+    path:     /User/ReclamationCovoiturage/{idOffre}
+    defaults: { _controller: MainBundle:Reclamation:newReclamation}
+
+Historique_Covoiturage:
+  path:      /User/HistoriqueCovoiturage
+  defaults: { _controller: MainBundle:OffreCovoiturage:showHistorique}
+
+ShowReclamationList:
+  path:     /User/ShowListReclamation
+  defaults: { _controller: MainBundle:Reclamation:index}
+
+SignalerCovoiturage_index:
+    path:     /User/SignalerCovoiturage/{idOffre}
+    defaults: { _controller: MainBundle:Reclamation:newSignaler}
+
+
+
+
+
+
+
+
+
+
+
+article_index:
+    path:     /User/article
+    defaults: { _controller: MainBundle:Article:index }
+
+article_new:
+    path:     /User/newArticle
+    defaults: { _controller: MainBundle:Article:new }
+
+article_search:
+    path:     /User/searchArticle
+    defaults: { _controller: MainBundle:Article:search }
+
+
+
+main_homepage:
+    path:     /admin/dashboard
+    defaults: { _controller: MainBundle:Default:index }
+
+admin_User_affiche:
+        path:     /admin/UserAffichage
+        defaults: { _controller: MainBundle:Utilisateur:index}
+
+main_homepageFront:
+    path:     User/indexFront
+    defaults: { _controller: MainBundle:Default:indexFront }
+
+admin_User_validation:
+        path:     /admin/validerUser/{user}
+        defaults: { _controller: MainBundle:Utilisateur:validerUser}
+
+admin_User_delete:
+        path:     /admin/deleteUser/{user}
+        defaults: { _controller: MainBundle:Utilisateur:delete}
+
+User_Inscription:
+        path:     /inscription
+        defaults: { _controller: MainBundle:Utilisateur:inscription}
+
+ReclamationCovoiturage_index:
+    path:     /User/ReclamationCovoiturage
+    defaults: { _controller: MainBundle:OffreCovoiturage:showExpirer}
+
+
+
+offrelocation_index:
+    path:     /User/OffreLocation
+    defaults: { _controller: MainBundle:OffreLocation:index }
+    methods:  GET
+
+offrelocation_show:
+    path:     /User/{idOffre}/showOffreLocation
+    defaults: { _controller: MainBundle:OffreLocation:show }
+
+
+offrelocation_new:
+    path:     /User/NewOffreLocation
+    defaults: { _controller: MainBundle:OffreLocation:new }
+
+
+offrelocation_edit:
+    path:     /{idOffre}/EditOffreLocation
+    defaults: { _controller: MainBundle:OffreLocation:edit }
+
+
+offrelocation_delete:
+    path:     /{idOffre}/DeleteOffreLocation
+    defaults: { _controller: MainBundle:OffreLocation:delete }
+
+

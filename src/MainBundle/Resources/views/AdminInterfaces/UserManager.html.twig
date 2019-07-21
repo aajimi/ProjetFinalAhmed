@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <style>
+        td {
+            text-align: center;
+        }
+        th {
+            text-align: center;
+        }
+    </style>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">La liste des utilisateurs </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table" >
+                                            <thead class=" text-primary">
+                                            <th>
+                                                Nom
+                                            </th>
+                                            <th>
+                                                Prenom
+                                            </th>
+                                            <th>
+                                                Login
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Num Tel
+                                            </th>
+
+                                            <th>
+                                                Actions
+                                            </th>
+                                            </thead>
+                                            <tbody>
+                                            {% for m in utilisateurs %}
+                                                {% if m != usr%}
+                                                <tr>
+                                                    <td> {{ m.nom}}</td>
+                                                    <td>{{ m.prenom}}</td>
+                                                    <td>{{ m.login}}</td>
+                                                    <td>{{ m.email}}</td>
+                                                    <td >{{ m.numeroTelephone}}</td>
+                                                    <td>
+                                                        {% if m.flagActif == NULL %}
+                                                            <a type="button"  href="{{path ('admin_User_validation',{'user':m.id}) }}" class="btn btn-primary" >Valider</a>
+                                                        {% endif %}
+
+                                                        <a type="button"    href="{{path ('admin_User_delete',{'user':m.id}) }}" class="btn btn-danger">Supprimer</a>
+                                                    </td>
+                                                </tr>
+                                                    {% endif %}
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row"> </div>
+                <div class="col-md-4"> </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Recommendation
+ *
+ * @ORM\Table(name="recommendation", indexes={@ORM\Index(name="fk_rec_1", columns={"id_recomendant"}), @ORM\Index(name="fk_rec_2", columns={"id_recomende"})})
+ * @ORM\Entity
+ */
+class Recommendation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_recommendation", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRecommendation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_recommendation", type="datetime", nullable=true)
+     */
+    private $dateRecommendation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="string", length=255, nullable=true)
+     */
+    private $commentaire;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_recomendant", referencedColumnName="id_user")
+     * })
+     */
+    private $idRecomendant;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_recomende", referencedColumnName="id_user")
+     * })
+     */
+    private $idRecomende;
+
+
+}
+

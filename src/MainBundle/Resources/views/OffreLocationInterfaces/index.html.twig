@@ -1,0 +1,48 @@
+{% extends 'baseF.html.twig' %}
+
+{% block content %}
+
+<div class="container"  >
+    <header class="jumbotron my-4">
+        <h1 class="display-3">Location Welcome!</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+    </header>
+
+    <div class="row text-center">
+    {% for offreLocation in offreLocations %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="{{ asset('img/firstcar.jpeg') }}"  alt="">
+                <div class="card-body">
+                    <p class="card-text">nbr jours Max: {{ offreLocation.nbrJourMax }} </p>
+                    <p class="card-text">nbr jours Min: {{ offreLocation.nbrJourMin }} </p>
+                    <p class="card-text"> prix par jour :{{ offreLocation.prix }}</p>
+
+                    <a class="btn btn-primary btn-sm" href="{{ path('offrelocation_show', { 'idOffre': offreLocation.idOffre }) }}">détails</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('offrelocation_edit', { 'idOffre': offreLocation.idOffre }) }}">détails</a>
+                </div>
+                <div class="card-footer">
+                    Mes commentaire
+                </div>
+            </div>
+
+
+
+
+</div>
+
+
+
+    {% endfor %}
+</div>
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('offrelocation_new') }}">Create a new offreLocation</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+

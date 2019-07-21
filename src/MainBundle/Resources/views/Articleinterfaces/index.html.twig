@@ -1,0 +1,127 @@
+{% extends 'baseF.html.twig' %}
+
+{% block content %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+
+    <!--To Work with icons-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <div class="container">
+
+        <a class="float-right btn btn-outline-primary ml-2" href="{{ path('article_new') }}">Create a new article</a>
+
+
+        <h2 class="text-center">Bienvenue Dans notre forum</h2>
+        {% for article in articles %}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <p class="text-secondary text-center">{% if article.datePublication %}{{ article.datePublication|date('Y-m-d H:i:s') }}{% endif %}</p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ article.idPublicateur }}</strong></a>
+                            {% if article.nbrVues == 5%}
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            {% endif %}
+
+                             {% if article.nbrVues == 10%}
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            {% endif %}
+
+                            {% if article.nbrVues > 10%}
+                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                                <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            {% endif %}
+
+                        </p>
+                        <div class="clearfix"></div>
+                        <p>{{ article.article }}</p>
+                        <p>
+
+
+                                <a  class="float-right btn btn-outline-primary ml-2" data-toggle="modal" data-target="#exampleModal"> commenter </a>
+
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ article.article }}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                        <p>
+
+                            Mon commentaire
+
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {% if article.idPublicateur == usr%}
+                            <a class="float-right btn text-white btn-danger" href="{{ path('article_edit', { 'idArticle': article.idArticle }) }}">modifier </a>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-inner">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p class="text-secondary text-center">{{ article.idPublicateur }}</p>
+                            </div>
+                            <div class="col-md-10">
+                                <p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Maniruzzaman Akash</strong></a></p>
+                                <p>les commentaires</p>
+                                <p>
+                                    <!--  houni les commentaire -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+    <style>
+        .card-inner{
+            margin-left: 4rem;
+        }
+    </style>
+
+
+
+
+    <!-- Modal -->
+
+
+
+{% endblock %}

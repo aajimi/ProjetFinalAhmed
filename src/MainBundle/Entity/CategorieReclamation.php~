@@ -1,0 +1,40 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CategorieReclamation
+ *
+ * @ORM\Table(name="categorie_reclamation")
+ * @ORM\Entity
+ */
+class CategorieReclamation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_categorie", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCategorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_reclamation", type="string", length=255, nullable=true)
+     */
+    private $typeReclamation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gravite", type="integer", nullable=true)
+     */
+    private $gravite;
+
+
+}
+

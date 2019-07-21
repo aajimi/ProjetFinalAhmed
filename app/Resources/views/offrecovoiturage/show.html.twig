@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offrecovoiturage</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idoffre</th>
+                <td>{{ offreCovoiturage.idOffre }}</td>
+            </tr>
+            <tr>
+                <th>Lieudepart</th>
+                <td>{{ offreCovoiturage.lieuDepart }}</td>
+            </tr>
+            <tr>
+                <th>Lieuarrivee</th>
+                <td>{{ offreCovoiturage.lieuArrivee }}</td>
+            </tr>
+            <tr>
+                <th>Datedepart</th>
+                <td>{% if offreCovoiturage.dateDepart %}{{ offreCovoiturage.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nbrplacesdispo</th>
+                <td>{{ offreCovoiturage.nbrPlacesDispo }}</td>
+            </tr>
+            <tr>
+                <th>Trajet</th>
+                <td>{{ offreCovoiturage.trajet }}</td>
+            </tr>
+            <tr>
+                <th>Flagannule</th>
+                <td>{% if offreCovoiturage.flagAnnule %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flagtermine</th>
+                <td>{% if offreCovoiturage.flagTermine %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flagfumeur</th>
+                <td>{% if offreCovoiturage.flagFumeur %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Flagfemaleonly</th>
+                <td>{% if offreCovoiturage.flagFemaleOnly %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Typecovoiturage</th>
+                <td>{{ offreCovoiturage.typeCovoiturage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offrecovoiturage_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('offrecovoiturage_edit', { 'idOffre': offreCovoiturage.idOffre }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

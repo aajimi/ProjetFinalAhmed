@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offrelocations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idoffre</th>
+                <th>Datepublication</th>
+                <th>Prix</th>
+                <th>Nbrjourmax</th>
+                <th>Nbrjourmin</th>
+                <th>Flagloue</th>
+                <th>Constructeurvoiture</th>
+                <th>Marquevoiture</th>
+                <th>Typevoiture</th>
+                <th>Photovoiture</th>
+                <th>Carburant</th>
+                <th>Motorisation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offreLocation in offreLocations %}
+            <tr>
+                <td><a href="{{ path('offrelocation_show', { 'idOffre': offreLocation.idOffre }) }}">{{ offreLocation.idOffre }}</a></td>
+                <td>{% if offreLocation.datePublication %}{{ offreLocation.datePublication|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ offreLocation.prix }}</td>
+                <td>{{ offreLocation.nbrJourMax }}</td>
+                <td>{{ offreLocation.nbrJourMin }}</td>
+                <td>{% if offreLocation.flagLoue %}Yes{% else %}No{% endif %}</td>
+                <td>{{ offreLocation.constructeurVoiture }}</td>
+                <td>{{ offreLocation.marqueVoiture }}</td>
+                <td>{{ offreLocation.typeVoiture }}</td>
+                <td>{{ offreLocation.photoVoiture }}</td>
+                <td>{{ offreLocation.carburant }}</td>
+                <td>{{ offreLocation.motorisation }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('offrelocation_show', { 'idOffre': offreLocation.idOffre }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('offrelocation_edit', { 'idOffre': offreLocation.idOffre }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offrelocation_new') }}">Create a new offreLocation</a>
+        </li>
+    </ul>
+{% endblock %}

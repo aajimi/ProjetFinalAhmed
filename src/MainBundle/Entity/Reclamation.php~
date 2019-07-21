@@ -1,0 +1,77 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reclamation
+ *
+ * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="fk_reclamation_01", columns={"id_categorie"}), @ORM\Index(name="fk_reclamation_02", columns={"id_reclamant"}), @ORM\Index(name="fk_reclamation_03", columns={"id_reclame"})})
+ * @ORM\Entity
+ */
+class Reclamation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_reclamation", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idReclamation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sujet", type="string", length=255, nullable=true)
+     */
+    private $sujet;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reclamation", type="datetime", nullable=true)
+     */
+    private $dateReclamation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_traite", type="boolean", nullable=true)
+     */
+    private $flagTraite;
+
+    /**
+     * @var \CategorieReclamation
+     *
+     * @ORM\ManyToOne(targetEntity="CategorieReclamation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id_categorie")
+     * })
+     */
+    private $idCategorie;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_reclamant", referencedColumnName="id_user")
+     * })
+     */
+    private $idReclamant;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_reclame", referencedColumnName="id_user")
+     * })
+     */
+    private $idReclame;
+
+
+}
+

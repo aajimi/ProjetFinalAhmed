@@ -1,0 +1,22 @@
+{% extends 'baseF.html.twig' %}
+
+{% block content %}
+    <h1>Passez une réclmation</h1>
+
+    {{ form_start(reclamationForm) }}
+
+    <div class="form-group">{{ form_row(reclamationForm.sujet,{ 'attr' : {'class' : 'form-control'}}) }}</div>
+
+    <div class="form-group col-md-6">{{ form_row(reclamationForm.dateReclamation) }}</div>
+    <div class="form-group">{{ form_row(reclamationForm.flagTraite,{'attr' : {'class' : 'form-control'}}) }}</div>
+    <div class="form-group">
+    <input type="submit" class="btn btn-warning"value="Envoyez Reclamation" />
+    </div>
+    {{ form_end(reclamationForm) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('ShowReclamationList') }}">Back to the list of reclamation</a>
+        </li>
+    </ul>
+{% endblock %}

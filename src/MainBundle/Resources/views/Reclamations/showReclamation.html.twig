@@ -1,0 +1,65 @@
+{% extends 'baseF.html.twig' %}
+
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <h1 class="display-3">A Warm Welcome!</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+        <div class="col-lg-10 col-md-6 mb-4">
+
+            <h2>Reclamation List </h2>
+
+            <table class="table">
+<tr>
+    <th>sujet</th>
+    <th>covoiturage reclamé</th>
+    <th>date reclamation</th>
+    <th>status</th>
+    <th>Actions</th>
+</tr>
+
+                <tbody>
+                {% for reclamation in reclamations%}
+<tr>
+    {% if reclamation.idReclamant == usr%}
+                    <td>{{ reclamation.sujet }}</td>
+                    <td>{{ reclamation.idReclame }}</td>
+                    <td>{{ reclamation.dateReclamation |date('Y-m-d') }}</td>
+                    <td>{{ reclamation.flagTraite }}</td>
+                    <td>
+                            <a type="button"   class="btn btn-warning"  >modifier</a>
+                             <a type="button"    class="btn btn-danger">supprimer</a>
+                    </td>
+    {%  endif %}
+</tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- /.row -->
+
+
+    <a class="btn btn-danger btn-lg" href="{{ path('offrecovoiturage_index') }}">Retour</a>
+
+
+
+</div>
+
+
+<!-- /.container -->
+
+<!-- Footer -->
+{% endblock %}

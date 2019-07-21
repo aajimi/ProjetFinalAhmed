@@ -1,0 +1,113 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OffreLocation
+ *
+ * @ORM\Table(name="offre_location", indexes={@ORM\Index(name="fk_0001", columns={"id_user"})})
+ * @ORM\Entity
+ */
+class OffreLocation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_offre", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOffre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_publication", type="datetime", nullable=true)
+     */
+    private $datePublication;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $prix;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_jour_max", type="integer", nullable=true)
+     */
+    private $nbrJourMax;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_jour_min", type="integer", nullable=true)
+     */
+    private $nbrJourMin;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_loue", type="boolean", nullable=true)
+     */
+    private $flagLoue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="constructeur_voiture", type="string", length=255, nullable=true)
+     */
+    private $constructeurVoiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marque_voiture", type="string", length=255, nullable=true)
+     */
+    private $marqueVoiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_voiture", type="string", length=255, nullable=true)
+     */
+    private $typeVoiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo_voiture", type="blob", nullable=true)
+     */
+    private $photoVoiture;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="carburant", type="string", length=255, nullable=true)
+     */
+    private $carburant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="motorisation", type="string", length=255, nullable=true)
+     */
+    private $motorisation;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     * })
+     */
+    private $idUser;
+
+
+}
+

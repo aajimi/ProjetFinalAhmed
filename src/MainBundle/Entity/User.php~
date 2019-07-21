@@ -1,0 +1,130 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+/**
+ * User
+ *
+ * @ORM\Table(name="fos_user")
+ * @ORM\Entity
+ */
+class User extends BaseUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=255, nullable=true)
+     */
+    private $login;
+
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=true)
+     */
+    private $dateCreation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_mail", type="string", length=255, nullable=true)
+     */
+    private $adresseMail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_telephone", type="string", length=255, nullable=true)
+     */
+    private $numeroTelephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flag_actif", type="string", length=255, nullable=true)
+     */
+    private $flagActif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profil", type="string", length=255, nullable=true)
+     */
+    private $profil;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="blob", nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="OffreCovoiturage", inversedBy="idUser")
+     * @ORM\JoinTable(name="offrecovoiturage_utilisateur",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_offre_covoiturage", referencedColumnName="id_offre")
+     *   }
+     * )
+     */
+    private $idOffreCovoiturage;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Article", inversedBy="idUser")
+     * @ORM\JoinTable(name="reaction",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_user", referencedColumnName="id_user")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_article", referencedColumnName="id_article")
+     *   }
+     * )
+     */
+    private $idArticle;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->idOffreCovoiturage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idArticle = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

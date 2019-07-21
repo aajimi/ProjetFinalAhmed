@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offrecovoiturages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idoffre</th>
+                <th>Lieudepart</th>
+                <th>Lieuarrivee</th>
+                <th>Datedepart</th>
+                <th>Nbrplacesdispo</th>
+                <th>Trajet</th>
+                <th>Flagannule</th>
+                <th>Flagtermine</th>
+                <th>Flagfumeur</th>
+                <th>Flagfemaleonly</th>
+                <th>Typecovoiturage</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offreCovoiturage in offreCovoiturages %}
+            <tr>
+                <td><a href="{{ path('offrecovoiturage_show', { 'idOffre': offreCovoiturage.idOffre }) }}">{{ offreCovoiturage.idOffre }}</a></td>
+                <td>{{ offreCovoiturage.lieuDepart }}</td>
+                <td>{{ offreCovoiturage.lieuArrivee }}</td>
+                <td>{% if offreCovoiturage.dateDepart %}{{ offreCovoiturage.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ offreCovoiturage.nbrPlacesDispo }}</td>
+                <td>{{ offreCovoiturage.trajet }}</td>
+                <td>{% if offreCovoiturage.flagAnnule %}Yes{% else %}No{% endif %}</td>
+                <td>{% if offreCovoiturage.flagTermine %}Yes{% else %}No{% endif %}</td>
+                <td>{% if offreCovoiturage.flagFumeur %}Yes{% else %}No{% endif %}</td>
+                <td>{% if offreCovoiturage.flagFemaleOnly %}Yes{% else %}No{% endif %}</td>
+                <td>{{ offreCovoiturage.typeCovoiturage }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('offrecovoiturage_show', { 'idOffre': offreCovoiturage.idOffre }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('offrecovoiturage_edit', { 'idOffre': offreCovoiturage.idOffre }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offrecovoiturage_new') }}">Create a new offreCovoiturage</a>
+        </li>
+    </ul>
+{% endblock %}

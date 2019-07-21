@@ -1,0 +1,120 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OffreCovoiturage
+ *
+ * @ORM\Table(name="offre_covoiturage", indexes={@ORM\Index(name="fk_offre_cov_01", columns={"test"})})
+ * @ORM\Entity
+ */
+class OffreCovoiturage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_offre", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idOffre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu_depart", type="string", length=255, nullable=true)
+     */
+    private $lieuDepart;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu_arrivee", type="string", length=255, nullable=true)
+     */
+    private $lieuArrivee;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_depart", type="datetime", nullable=true)
+     */
+    private $dateDepart;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_places_dispo", type="integer", nullable=true)
+     */
+    private $nbrPlacesDispo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="trajet", type="string", length=255, nullable=true)
+     */
+    private $trajet;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_annule", type="boolean", nullable=true)
+     */
+    private $flagAnnule;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_termine", type="boolean", nullable=true)
+     */
+    private $flagTermine;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_fumeur", type="boolean", nullable=true)
+     */
+    private $flagFumeur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flag_female_only", type="boolean", nullable=true)
+     */
+    private $flagFemaleOnly;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_covoiturage", type="string", length=255, nullable=true)
+     */
+    private $typeCovoiturage;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test", referencedColumnName="id_user")
+     * })
+     */
+    private $test;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="idOffreCovoiturage")
+     */
+    private $idUser;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idUser = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

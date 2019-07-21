@@ -1,0 +1,24 @@
+offrelocation_index:
+    path:     /
+    defaults: { _controller: "MainBundle:OffreLocation:index" }
+    methods:  GET
+
+offrelocation_show:
+    path:     /{idOffre}/show
+    defaults: { _controller: "MainBundle:OffreLocation:show" }
+    methods:  GET
+
+offrelocation_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:OffreLocation:new" }
+    methods:  [GET, POST]
+
+offrelocation_edit:
+    path:     /{idOffre}/edit
+    defaults: { _controller: "MainBundle:OffreLocation:edit" }
+    methods:  [GET, POST]
+
+offrelocation_delete:
+    path:     /{idOffre}/delete
+    defaults: { _controller: "MainBundle:OffreLocation:delete" }
+    methods:  DELETE

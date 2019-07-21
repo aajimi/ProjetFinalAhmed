@@ -1,0 +1,24 @@
+offrecovoiturage_index:
+    path:     /
+    defaults: { _controller: "MainBundle:OffreCovoiturage:index" }
+    methods:  GET
+
+offrecovoiturage_show:
+    path:     /{idOffre}/show
+    defaults: { _controller: "MainBundle:OffreCovoiturage:show" }
+    methods:  GET
+
+offrecovoiturage_new:
+    path:     /new
+    defaults: { _controller: "MainBundle:OffreCovoiturage:new" }
+    methods:  [GET, POST]
+
+offrecovoiturage_edit:
+    path:     /{idOffre}/edit
+    defaults: { _controller: "MainBundle:OffreCovoiturage:edit" }
+    methods:  [GET, POST]
+
+offrecovoiturage_delete:
+    path:     /{idOffre}/delete
+    defaults: { _controller: "MainBundle:OffreCovoiturage:delete" }
+    methods:  DELETE

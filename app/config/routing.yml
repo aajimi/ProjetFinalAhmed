@@ -1,0 +1,21 @@
+
+
+main_reclamation:
+    resource: "@MainBundle/Controller/ReclamationController.php"
+    type:     annotation
+
+main_article:
+    resource: "@MainBundle/Controller/ArticleController.php"
+    type:     annotation
+
+main:
+    resource: "@MainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

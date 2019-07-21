@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Offrelocation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idoffre</th>
+                <td>{{ offreLocation.idOffre }}</td>
+            </tr>
+            <tr>
+                <th>Datepublication</th>
+                <td>{% if offreLocation.datePublication %}{{ offreLocation.datePublication|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ offreLocation.prix }}</td>
+            </tr>
+            <tr>
+                <th>Nbrjourmax</th>
+                <td>{{ offreLocation.nbrJourMax }}</td>
+            </tr>
+            <tr>
+                <th>Nbrjourmin</th>
+                <td>{{ offreLocation.nbrJourMin }}</td>
+            </tr>
+            <tr>
+                <th>Flagloue</th>
+                <td>{% if offreLocation.flagLoue %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Constructeurvoiture</th>
+                <td>{{ offreLocation.constructeurVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Marquevoiture</th>
+                <td>{{ offreLocation.marqueVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Typevoiture</th>
+                <td>{{ offreLocation.typeVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Photovoiture</th>
+                <td>{{ offreLocation.photoVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Carburant</th>
+                <td>{{ offreLocation.carburant }}</td>
+            </tr>
+            <tr>
+                <th>Motorisation</th>
+                <td>{{ offreLocation.motorisation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offrelocation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('offrelocation_edit', { 'idOffre': offreLocation.idOffre }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

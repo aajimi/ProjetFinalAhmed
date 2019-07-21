@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reclamations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idreclamation</th>
+                <th>Sujet</th>
+                <th>Datereclamation</th>
+                <th>Flagtraite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td><a href="{{ path('reclamation_show', { 'idReclamation': reclamation.idReclamation }) }}">{{ reclamation.idReclamation }}</a></td>
+                <td>{{ reclamation.sujet }}</td>
+                <td>{% if reclamation.dateReclamation %}{{ reclamation.dateReclamation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if reclamation.flagTraite %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reclamation_show', { 'idReclamation': reclamation.idReclamation }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

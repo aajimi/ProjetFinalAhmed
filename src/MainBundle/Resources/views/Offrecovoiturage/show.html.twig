@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>covoiturage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link  href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+    <link   href="{{ asset('css/heroic-features.css') }}"  rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <h1 class="display-3">A Warm Welcome!</h1>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+        <div class="col-lg-10 col-md-6 mb-4">
+
+            <h2>Covoiturage Details</h2>
+
+            <table class="table">
+
+
+                <tbody>
+                <tr>
+                    <td>Départ</td>
+                    <td>{{ offreCovoiturage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <td>Arrivé</td>
+                    <td>{{ offreCovoiturage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <td>Nombre de places disponibles</td>
+                    <td>{{ offreCovoiturage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>{{ offreCovoiturage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <td>Trajet</td>
+                    <td>{{ offreCovoiturage.lieuDepart }}</td>
+                </tr>
+                <tr>
+                    <td>Avec fumeur</td>
+                    <td> {% if offreCovoiturage.flagFumeur %}Oui{% else %}Non{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Femmes seulement </td>
+                    <td>{% if offreCovoiturage.flagFemaleOnly %}Oui{% else %}Non{% endif %}</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- /.row -->
+
+
+        <a class="btn btn-danger btn-lg" href="{{ path('offrecovoiturage_index') }}">Retour</a>
+        <button class="btn btn-primary btn-lg" onClick="reserver()">Réserver</button>
+
+
+
+</div>
+<br/>
+
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script>
+function reserver(){
+var nbr_places=  prompt("donner le nombre des places a reservé");
+console.log(nbr_places);
+}
+</script>
+
+</body>
+
+</html>

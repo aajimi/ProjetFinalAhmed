@@ -1,0 +1,67 @@
+<?php
+
+namespace MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Feedback
+ *
+ * @ORM\Table(name="feedback", indexes={@ORM\Index(name="fk_feedback_01", columns={"id_user1"}), @ORM\Index(name="fk_feedback_02", columns={"id_user2"})})
+ * @ORM\Entity
+ */
+class Feedback
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_feedback", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idFeedback;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_feedback", type="datetime", nullable=true)
+     */
+    private $dateFeedback;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="string", length=255, nullable=true)
+     */
+    private $message;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rate", type="integer", nullable=true)
+     */
+    private $rate;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user1", referencedColumnName="id_user")
+     * })
+     */
+    private $idUser1;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user2", referencedColumnName="id_user")
+     * })
+     */
+    private $idUser2;
+
+
+}
+
