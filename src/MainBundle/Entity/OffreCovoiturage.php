@@ -22,7 +22,6 @@ class OffreCovoiturage
     private $idOffre;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="lieu_depart", type="string", length=255, nullable=true)
      */

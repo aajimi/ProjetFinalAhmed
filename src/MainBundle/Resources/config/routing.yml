@@ -57,7 +57,9 @@ SignalerCovoiturage_index:
     path:     /User/SignalerCovoiturage/{idOffre}
     defaults: { _controller: MainBundle:Reclamation:newSignaler}
 
-
+Reclamation_edit:
+    path:     /EditReclamation/{idReclamation}
+    defaults: { _controller: MainBundle:Reclamation:edit}
 
 
 

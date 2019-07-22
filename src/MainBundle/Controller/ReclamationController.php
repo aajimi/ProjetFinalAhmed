@@ -76,19 +76,90 @@ class ReclamationController extends Controller
     }
 
     public function newSignalerAction(Request $request , OffreCovoiturage $covoiturage)
-    {
-    $user = new Utilisateur() ;
-    $user->setNbrSignal($user->getNbrSignal()+1);
-    $user = $covoiturage->getIdUser();
 
-        $em = $user->getDoctrine()->getManager();
-        $em->persist($user);
+    {   $em = $this->getDoctrine()->getManager();
+
+        $utilisateur = $em->getRepository('MainBundle:Utilisateur')->findOneBy($covoiturage->getIdUser()->getValues());
+        $utilisateur->setNbrSignal($utilisateur->getNbrSignal()+1);
+
+        if ($utilisateur->getNbrSignal() == 5){
+
+            $utilisateur->setFlagActif(null);
+
+
+        }
+        $em->persist($utilisateur);
         $em->flush();
 
+        /**
+         * Signaler mail
+         */
+        //$transport = new \Swift_SmtpTransport();
 
+        //$mailer = new \Swift_Mailer();
+        $variable=  $utilisateur->getEmail();
+        $message = (new \Swift_Message('test a changer'))
+            ->setFrom('service@coovoiturage.com')
+            ->setTo($variable)
+            ->setBody(
+                $this->renderView(
+                    'Emails/signaler.html.twig',
+                    [
+                        'utilisateur'  =>  $utilisateur
+                    ]
+                ),
+                'text/html'
+            );
+
+//dump($variable);
+//die();
+        $this->get('mailer')->send($message);
+        //$mailer->send($message);
 
         return $this->render('@Main/Reclamations/showSignaler.html.twig');
     }
+
+
+    /**
+     * Deletes a article entity.
+     *
+     */
+/** edit reclamation  */
+
+    public function editAction( Request $request , Reclamation $reclamation)
+    {
+     //  $deleteForm = $this->createDeleteForm($reclamation);
+     /**   $editForm = $this->createForm('MainBundle\Form\A', $reclamation); */
+      //$reclamation= new Reclamation();
+      //dump($reclamation);die();
+        $editForm = $this->createForm('MainBundle\Form\ReclamationType',$reclamation);
+
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+           /** return $this->redirectToRoute('article_index', array('idArticle' => $reclamation->getIdarticle())); */
+       return $this->redirectToRoute('ShowReclamationList');
+
+        }
+
+        return $this->render('@Main/Reclamations/editReclamation.html.twig', array(
+            'reclamation' => $reclamation,
+            'edit_reclamationForm' => $editForm->createView(),
+        //    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 }

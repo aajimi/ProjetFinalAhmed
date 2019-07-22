@@ -13,11 +13,11 @@
     {% for offreLocation in offreLocations %}
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100">
-                <img class="card-img-top" src="{{ asset('img/firstcar.jpeg') }}"  alt="">
+                <img class="card-img-top" src="{{ asset("locationImg/"~ offreLocation.photoVoiture)}}"  alt="">
                 <div class="card-body">
-                    <p class="card-text">nbr jours Max: {{ offreLocation.nbrJourMax }} </p>
-                    <p class="card-text">nbr jours Min: {{ offreLocation.nbrJourMin }} </p>
-                    <p class="card-text"> prix par jour :{{ offreLocation.prix }}</p>
+                    <p class="card-text">Nbr jours Max: {{ offreLocation.nbrJourMax }} </p>
+                    <p class="card-text">Nbr jours Min: {{ offreLocation.nbrJourMin }} </p>
+                    <p class="card-text">Prix par jour :{{ offreLocation.prix }}</p>
 
                     <a class="btn btn-primary btn-sm" href="{{ path('offrelocation_show', { 'idOffre': offreLocation.idOffre }) }}">détails</a>
                     <a class="btn btn-primary btn-sm" href="{{ path('offrelocation_edit', { 'idOffre': offreLocation.idOffre }) }}">détails</a>

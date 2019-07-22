@@ -94,6 +94,7 @@ class ArticleController extends Controller
     {
         $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('MainBundle\Form\ArticleType', $article);
+        //dump($article);die();
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

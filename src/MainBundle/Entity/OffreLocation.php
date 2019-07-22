@@ -80,14 +80,14 @@ class OffreLocation
     /**
      * @var string
      *
-     * @ORM\Column(name="photo_voiture", type="blob", nullable=true)
+     * @ORM\Column(name="photo_voiture", type="string", nullable=true)
      */
     private $photoVoiture;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="carburant", type="string", length=255, nullable=true)
+     * @ORM\Column(name="carburant", type="string", length=255, length=255, nullable=true)
      */
     private $carburant;
 

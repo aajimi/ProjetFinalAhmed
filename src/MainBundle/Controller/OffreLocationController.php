@@ -38,6 +38,43 @@ class OffreLocationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+//            $brochureFile = $form['brochure']->getData();
+
+//            if ($brochureFile) {
+//                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+//                // this is needed to safely include the file name as part of the URL
+//                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+//                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+//
+//                // Move the file to the directory where brochures are stored
+//                try {
+//                    $brochureFile->move(
+//                        $this->getParameter('brochures_directory'),
+//                        $newFilename
+//                    );
+//                } catch (FileException $e) {
+//                    // ... handle exception if something happens during file upload
+//                }
+//
+//                // updates the 'brochureFilename' property to store the PDF file name
+//                // instead of its contents
+//                $offreLocation->setBrochureFilename($newFilename);
+//            }
+
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $uploadedFile = $form['photoVoiture']->getData();
+                $destination = './locationImg';
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+
+                $offreLocation->setPhotoVoiture($newFilename);
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($offreLocation);
             $em->flush();

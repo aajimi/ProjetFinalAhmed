@@ -72,6 +72,14 @@ class Reclamation
      */
     private $idReclame;
 
+    /**
+     * Reclamation constructor.
+     * @param int $idReclamation
+     */
+    public function __construct()
+    {
+        $this->idReclamation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
